@@ -19,6 +19,14 @@
         <mysql.version>5.1.39</mysql.version>
         <c3p0.version>0.9.1.2</c3p0.version>
         <redis.version>2.8.2</redis.version>
+        <logback.version>1.1.1</logback.version>
+        <commons-logging.version>1.2</commons-logging.version>
+        <slf4j.version>1.7.12</slf4j.version>
+        <commons-collections.version>3.2</commons-collections.version>
+        <servlet-api.version>3.1.0</servlet-api.version>
+        <jackson-databind.version>2.5.4</jackson-databind.version>
+        <standard-taglibs.version>1.1.2</standard-taglibs.version>
+        <jstl.version>1.2</jstl.version>
     </properties>
     <dependencies>
         <!-- 单元测试 -->
@@ -26,28 +34,29 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
         <!-- 1.日志 -->
         <!-- 实现slf4j接口并整合 -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.12</version>
+            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
-            <version>1.1.1</version>
+            <version>${logback.version}</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.1.1</version>
+            <version>${logback.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
-            <version>1.2</version>
+            <version>${commons-logging.version}</version>
         </dependency>
         <!-- 2.数据库 -->
         <dependency>
@@ -76,22 +85,23 @@
         <dependency>
             <groupId>taglibs</groupId>
             <artifactId>standard</artifactId>
-            <version>1.1.2</version>
+            <version>${standard-taglibs.version}</version>
         </dependency>
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
-            <version>1.2</version>
+            <version>${jstl.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.5.4</version>
+            <version>${jackson-databind.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <version>${servlet-api.version}</version>
+            <scope>provided</scope>
         </dependency>
         <!-- 4.Spring -->
         <!-- 1)Spring核心 -->
@@ -158,7 +168,7 @@
         <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
-            <version>3.2</version>
+            <version>${commons-collections.version}</version>
         </dependency>
     </dependencies>
     <build>
