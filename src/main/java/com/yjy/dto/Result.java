@@ -1,4 +1,4 @@
-package com.sms.yjy.dto;
+package com.yjy.dto;
 
 /**
  * 封装json对象，所有返回结果都使用它

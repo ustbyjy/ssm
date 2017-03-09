@@ -1,7 +1,7 @@
-package com.sms.yjy.dto;
+package com.yjy.dto;
 
-import com.sms.yjy.entity.Appointment;
-import com.sms.yjy.enums.AppointStateEnum;
+import com.yjy.entity.Appointment;
+import com.yjy.enums.AppointStateEnum;
 
 /**
  * 封装预约执行后结果

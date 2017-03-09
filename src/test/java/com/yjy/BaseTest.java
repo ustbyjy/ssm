@@ -1,4 +1,4 @@
-package com.sms.yjy;
+package com.yjy;
 
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

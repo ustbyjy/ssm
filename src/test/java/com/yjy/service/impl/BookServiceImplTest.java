@@ -1,8 +1,8 @@
-package com.sms.yjy.service.impl;
+package com.yjy.service.impl;
 
-import com.sms.yjy.BaseTest;
-import com.sms.yjy.dto.AppointExecution;
-import com.sms.yjy.service.BookService;
+import com.yjy.BaseTest;
+import com.yjy.dto.AppointExecution;
+import com.yjy.service.BookService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

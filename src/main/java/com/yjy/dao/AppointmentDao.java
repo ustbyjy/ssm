@@ -1,6 +1,6 @@
-package com.sms.yjy.dao;
+package com.yjy.dao;
 
-import com.sms.yjy.entity.Appointment;
+import com.yjy.entity.Appointment;
 import org.apache.ibatis.annotations.Param;
 
 public interface AppointmentDao {

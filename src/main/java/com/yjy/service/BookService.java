@@ -1,9 +1,9 @@
-package com.sms.yjy.service;
+package com.yjy.service;
 
 import java.util.List;
 
-import com.sms.yjy.entity.Book;
-import com.sms.yjy.dto.AppointExecution;
+import com.yjy.entity.Book;
+import com.yjy.dto.AppointExecution;
 
 /**
  * 业务接口：站在"使用者"角度设计接口 三个方面：方法定义粒度，参数，返回类型（return 类型/异常）

@@ -1,7 +1,7 @@
-package com.sms.yjy.dao;
+package com.yjy.dao;
 
-import com.sms.yjy.entity.Book;
-import com.sms.yjy.BaseTest;
+import com.yjy.entity.Book;
+import com.yjy.BaseTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

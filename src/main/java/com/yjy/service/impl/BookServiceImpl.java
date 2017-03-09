@@ -1,12 +1,12 @@
-package com.sms.yjy.service.impl;
+package com.yjy.service.impl;
 
-import com.sms.yjy.dao.AppointmentDao;
-import com.sms.yjy.dao.BookDao;
-import com.sms.yjy.dto.AppointExecution;
-import com.sms.yjy.entity.Appointment;
-import com.sms.yjy.entity.Book;
-import com.sms.yjy.enums.AppointStateEnum;
-import com.sms.yjy.service.BookService;
+import com.yjy.dao.AppointmentDao;
+import com.yjy.dao.BookDao;
+import com.yjy.dto.AppointExecution;
+import com.yjy.entity.Appointment;
+import com.yjy.entity.Book;
+import com.yjy.enums.AppointStateEnum;
+import com.yjy.service.BookService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

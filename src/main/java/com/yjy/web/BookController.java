@@ -1,9 +1,9 @@
-package com.sms.yjy.web;
+package com.yjy.web;
 
-import com.sms.yjy.dto.AppointExecution;
-import com.sms.yjy.dto.Result;
-import com.sms.yjy.entity.Book;
-import com.sms.yjy.service.BookService;
+import com.yjy.dto.AppointExecution;
+import com.yjy.dto.Result;
+import com.yjy.entity.Book;
+import com.yjy.service.BookService;
 import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

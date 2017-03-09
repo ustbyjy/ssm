@@ -1,4 +1,4 @@
-package com.sms.yjy.entity;
+package com.yjy.entity;
 
 /**
  * 图书实体

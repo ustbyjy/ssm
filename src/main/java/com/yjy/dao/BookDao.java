@@ -1,8 +1,8 @@
-package com.sms.yjy.dao;
+package com.yjy.dao;
 
 import java.util.List;
 
-import com.sms.yjy.entity.Book;
+import com.yjy.entity.Book;
 import org.apache.ibatis.annotations.Param;
 
 public interface BookDao {

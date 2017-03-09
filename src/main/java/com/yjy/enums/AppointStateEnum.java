@@ -1,4 +1,4 @@
-package com.sms.yjy.enums;
+package com.yjy.enums;
 
 /**
  * 使用枚举表述常量数据字典
