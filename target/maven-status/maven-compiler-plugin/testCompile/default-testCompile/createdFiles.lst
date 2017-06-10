@@ -1,0 +1,4 @@
+com\sms\yjy\service\impl\BookServiceImplTest.class
+com\sms\yjy\BaseTest.class
+com\sms\yjy\dao\BookDaoTest.class
+com\sms\yjy\dao\AppointmentDaoTest.class
