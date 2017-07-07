@@ -5,8 +5,7 @@
     <artifactId>ssm</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ssm Maven Webapp</name>
-    <url>http://github.com/liyifeng1994/ssm</url>
+    <name>ssm</name>
 
     <properties>
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
@@ -27,6 +26,8 @@
         <jackson-databind.version>2.5.4</jackson-databind.version>
         <standard-taglibs.version>1.1.2</standard-taglibs.version>
         <jstl.version>1.2</jstl.version>
+        <easy-http.version>1.1.1</easy-http.version>
+        <protostuff.version>1.0.8</protostuff.version>
     </properties>
     <dependencies>
         <!-- 单元测试 -->
@@ -157,18 +158,24 @@
         <dependency>
             <groupId>com.dyuproject.protostuff</groupId>
             <artifactId>protostuff-core</artifactId>
-            <version>1.0.8</version>
+            <version>${protostuff.version}</version>
         </dependency>
         <dependency>
             <groupId>com.dyuproject.protostuff</groupId>
             <artifactId>protostuff-runtime</artifactId>
-            <version>1.0.8</version>
+            <version>${protostuff.version}</version>
         </dependency>
         <!-- Map工具类 -->
         <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
             <version>${commons-collections.version}</version>
+        </dependency>
+        <!-- http请求依赖 -->
+        <dependency>
+            <groupId>com.mzlion</groupId>
+            <artifactId>easy-okhttp</artifactId>
+            <version>${easy-http.version}</version>
         </dependency>
     </dependencies>
     <build>
@@ -180,6 +187,21 @@
                 <configuration>
                     <source>${jdk.version}</source>
                     <target>${jdk.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <version>6.1.26</version>
+                <configuration>
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <contextPath>/</contextPath>
+                    <connectors>
+                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+                            <port>9080</port>
+                            <headerBufferSize>80000</headerBufferSize>
+                        </connector>
+                    </connectors>
                 </configuration>
             </plugin>
         </plugins>
