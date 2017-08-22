@@ -2,7 +2,9 @@ package com.yjy.dao;
 
 import com.yjy.entity.Appointment;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface AppointmentDao {
 
     /**

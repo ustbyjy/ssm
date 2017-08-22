@@ -38,8 +38,8 @@ public class BookServiceImpl implements BookService {
         return bookDao.queryAll(0, 1000);
     }
 
-    @Override
     @Transactional
+    @Override
     public AppointExecution appoint(long bookId, long studentId) {
         try {
             // 减库存

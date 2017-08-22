@@ -2,9 +2,11 @@ package com.yjy.dao;
 
 import com.yjy.entity.Book;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface BookDao {
 
     /**

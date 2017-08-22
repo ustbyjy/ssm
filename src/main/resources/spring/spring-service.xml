@@ -60,6 +60,7 @@
                 <ref bean="cronTrigger" />
             </list>
         </property>
+        <property name="autoStartup" value="false" />
     </bean>
 
 </beans>
