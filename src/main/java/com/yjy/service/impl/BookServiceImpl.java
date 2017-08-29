@@ -57,6 +57,7 @@ public class BookServiceImpl implements BookService {
                 }
             }
         } catch (Exception e) {
+
             logger.error(e.getMessage(), e);
             // 所有编译期异常转换为运行期异常
             return new AppointExecution(bookId, AppointStateEnum.INNER_ERROR);

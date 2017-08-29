@@ -6,6 +6,8 @@ import com.yjy.service.BookService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Random;
+
 public class BookServiceImplTest extends BaseTest {
 
     @Autowired

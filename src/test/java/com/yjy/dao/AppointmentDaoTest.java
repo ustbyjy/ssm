@@ -5,6 +5,8 @@ import com.yjy.entity.Appointment;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Random;
+
 public class AppointmentDaoTest extends BaseTest {
 
     @Autowired
@@ -16,6 +18,14 @@ public class AppointmentDaoTest extends BaseTest {
         long studentId = 12345678910L;
         int insert = appointmentDao.insertAppointment(bookId, studentId);
         System.out.println("insert=" + insert);
+    }
+
+    @Test
+    public void testBatchInsertAppointment() {
+        long[] bookIds = {1000, 1001, 1002, 1003};
+        for (int i = 27000; i < 100000; i++) {
+            appointmentDao.insertAppointment(bookIds[Math.abs(new Random().nextInt()) % 4], i);
+        }
     }
 
     @Test

@@ -1,47 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:property-placeholder location="classpath:jdbc.properties" />
 
-    <bean id="abstractDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+    <bean id="readDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <!-- 配置连接池属性 -->
-        <property name="driverClassName" value="${jdbc.driver}" />
-        <!-- 初始化连接大小 -->
-        <property name="initialSize" value="0" />
-        <!-- 连接池最大使用连接数量 -->
-        <property name="maxActive" value="20" />
-        <!-- 连接池最小空闲 -->
-        <property name="minIdle" value="0" />
-        <!-- 获取连接最大等待时间 -->
-        <property name="maxWait" value="60000" />
-    </bean>
-
-    <bean id="readDataSource" parent="abstractDataSource">
+        <property name="driverClassName" value="${read.jdbc.driver}" />
         <property name="url" value="${read.jdbc.url}" />
         <property name="username" value="${read.jdbc.user}" />
         <property name="password" value="${read.jdbc.password}" />
+        <!-- 初始化连接大小 -->
+        <property name="initialSize" value="${read.initialSize}" />
+        <!-- 连接池最大使用连接数量 -->
+        <property name="maxActive" value="${read.maxActive}" />
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle" value="${read.minIdle}" />
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxWait" value="${read.maxWait}" />
     </bean>
 
-    <bean id="writeDataSource" parent="abstractDataSource">
+    <bean id="writeDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <!-- 配置连接池属性 -->
+        <property name="driverClassName" value="${write.jdbc.driver}" />
         <property name="url" value="${write.jdbc.url}" />
         <property name="username" value="${write.jdbc.user}" />
         <property name="password" value="${write.jdbc.password}" />
+        <!-- 初始化连接大小 -->
+        <property name="initialSize" value="${write.initialSize}" />
+        <!-- 连接池最大使用连接数量 -->
+        <property name="maxActive" value="${write.maxActive}" />
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle" value="${write.minIdle}" />
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxWait" value="${write.maxWait}" />
     </bean>
 
     <bean id="dataSource" class="com.yjy.dynamic.DynamicDataSource">
         <property name="readDataSource" ref="readDataSource" />
         <property name="writeDataSource" ref="writeDataSource" />
     </bean>
-
-    <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource" />
-    </bean>
-
-    <tx:annotation-driven transaction-manager="transactionManager" />
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!-- 注入数据库连接池 -->
