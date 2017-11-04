@@ -1,11 +1,5 @@
 package com.yjy.dynamic;
 
-/**
- * Created by IDEA
- * User: shawntime
- * Date: 2016-07-14 10:57
- * Desc:
- */
 public final class DynamicDataSourceHolder {
 
     private static final ThreadLocal<DynamicDataSourceGlobal> holder = new ThreadLocal<DynamicDataSourceGlobal>();
