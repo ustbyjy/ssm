@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,6 +40,13 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    @CachePut(key = "':'.concat(#book.bookId)")
+    public Book update(Book book) {
+        bookDao.update(book);
+        return getById(book.getBookId());
+    }
+
+    @Override
     @CacheEvict(key = "':'.concat(#bookId)")
     public boolean deleteById(Long bookId) {
         Integer result = bookDao.deleteById(bookId);
@@ -52,7 +60,6 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    @Cacheable
     public List<Book> getList() {
         return bookDao.queryAll(0, 1000);
     }

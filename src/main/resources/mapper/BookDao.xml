@@ -2,9 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yjy.dao.BookDao">
 
-    <insert id="insert" parameterType="Book">
+    <insert id="insert" parameterType="Book" useGeneratedKeys="true" keyProperty="bookId">
         INSERT INTO book (name, number) VALUES (#{name}, #{number})
     </insert>
+
+    <update id="update" parameterType="Book">
+        UPDATE book SET name = #{name}, number = #{number} WHERE book_id = #{bookId}
+    </update>
 
     <delete id="deleteById" parameterType="long">
         DELETE FROM book

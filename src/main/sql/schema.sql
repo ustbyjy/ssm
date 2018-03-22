@@ -9,7 +9,6 @@ CREATE TABLE `book` (
   PRIMARY KEY (`book_id`)
 )
   ENGINE = InnoDB
-  AUTO_INCREMENT = 1000
   DEFAULT CHARSET = utf8
   COMMENT = '图书表';
 

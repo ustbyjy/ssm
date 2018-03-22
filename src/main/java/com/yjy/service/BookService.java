@@ -19,6 +19,14 @@ public interface BookService {
     boolean insert(Book book);
 
     /**
+     * 更新一本图书
+     *
+     * @param book
+     * @return
+     */
+    Book update(Book book);
+
+    /**
      * 删除一本图书
      *
      * @param bookId

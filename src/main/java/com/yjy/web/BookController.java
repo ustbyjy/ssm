@@ -36,8 +36,15 @@ public class BookController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     private Result add(Book book, Model model) {
-        boolean result = bookService.insert(book);
-        return new Result(result, "");
+        bookService.insert(book);
+        return new Result(true, "");
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @ResponseBody
+    private Result update(Book book, Model model) {
+        bookService.update(book);
+        return new Result(true, "");
     }
 
     @RequestMapping(value = "/delete/{bookId}", method = RequestMethod.GET)
