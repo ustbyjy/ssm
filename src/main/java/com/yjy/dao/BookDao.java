@@ -9,6 +9,10 @@ import java.util.List;
 @Repository
 public interface BookDao {
 
+    Integer insert(Book book);
+
+    Integer deleteById(Long id);
+
     /**
      * 通过ID查询单本图书
      *

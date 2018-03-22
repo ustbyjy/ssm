@@ -27,25 +27,32 @@ public class BookController {
     private BookService bookService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    private String list(Model model) {
+    @ResponseBody
+    private Result<List> list(Model model) {
         List<Book> list = bookService.getList();
-        model.addAttribute("list", list);
-        return "list";
+        return new Result<List>(true, list);
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @ResponseBody
+    private Result add(Book book, Model model) {
+        boolean result = bookService.insert(book);
+        return new Result(result, "");
+    }
+
+    @RequestMapping(value = "/delete/{bookId}", method = RequestMethod.GET)
+    @ResponseBody
+    private Result delete(@PathVariable("bookId") Long bookId, Model model) {
+        boolean result = bookService.deleteById(bookId);
+        return new Result(result, "");
     }
 
     // ajax json
-    @RequestMapping(value = "/{bookId}/detail", method = RequestMethod.GET)
+    @RequestMapping(value = "/detail/{bookId}", method = RequestMethod.GET)
     @ResponseBody
-    private String detail(@PathVariable("bookId") Long bookId, Model model) {
-        if (bookId == null) {
-            return "redirect:/book/list";
-        }
+    private Result<Book> detail(@PathVariable("bookId") Long bookId, Model model) {
         Book book = bookService.getById(bookId);
-        if (book == null) {
-            return "forward:/book/list";
-        }
-        model.addAttribute("book", book);
-        return "detail";
+        return new Result<Book>(true, book);
     }
 
     @RequestMapping(value = "/{bookId}/appoint", method = RequestMethod.POST, produces = {"application/json; charset=utf-8"})

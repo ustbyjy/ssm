@@ -31,7 +31,6 @@ public class DynamicPlugin implements Interceptor {
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
-
         boolean synchronizationActive = TransactionSynchronizationManager.isSynchronizationActive();
         if (!synchronizationActive) {
             Object[] objects = invocation.getArgs();

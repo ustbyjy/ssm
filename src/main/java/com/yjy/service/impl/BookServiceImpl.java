@@ -10,12 +10,16 @@ import com.yjy.service.BookService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@CacheConfig(cacheNames = {"book"})
 public class BookServiceImpl implements BookService {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -27,13 +31,28 @@ public class BookServiceImpl implements BookService {
     @Autowired
     private AppointmentDao appointmentDao;
 
+    @Override
+    @CacheEvict(allEntries = true)
+    public boolean insert(Book book) {
+        Integer result = bookDao.insert(book);
+        return result > 0;
+    }
 
     @Override
+    @CacheEvict(key = "':'.concat(#bookId)")
+    public boolean deleteById(Long bookId) {
+        Integer result = bookDao.deleteById(bookId);
+        return result > 0;
+    }
+
+    @Override
+    @Cacheable(key = "':'.concat(#bookId)")
     public Book getById(long bookId) {
         return bookDao.queryById(bookId);
     }
 
     @Override
+    @Cacheable
     public List<Book> getList() {
         return bookDao.queryAll(0, 1000);
     }

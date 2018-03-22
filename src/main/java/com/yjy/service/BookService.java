@@ -11,6 +11,22 @@ import java.util.List;
 public interface BookService {
 
     /**
+     * 新增一本图书
+     *
+     * @param book
+     * @return
+     */
+    boolean insert(Book book);
+
+    /**
+     * 删除一本图书
+     *
+     * @param bookId
+     * @return
+     */
+    boolean deleteById(Long bookId);
+
+    /**
      * 查询一本图书
      *
      * @param bookId
