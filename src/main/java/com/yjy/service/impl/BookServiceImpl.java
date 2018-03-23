@@ -19,8 +19,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * {@link CacheEvict}的beforeInvocation属性默认是false，如果方法执行中抛出异常则不会清除缓存，
+ * 当beforeInvocation=true时，在方法执行前就清除缓存。
+ */
 @Service
-@CacheConfig(cacheNames = {"book"})
+@CacheConfig(cacheNames = "book")
 public class BookServiceImpl implements BookService {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -33,7 +37,7 @@ public class BookServiceImpl implements BookService {
     private AppointmentDao appointmentDao;
 
     @Override
-    @CacheEvict(allEntries = true)
+    @CacheEvict(allEntries = true, beforeInvocation = true)
     public boolean insert(Book book) {
         Integer result = bookDao.insert(book);
         return result > 0;
@@ -47,7 +51,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    @CacheEvict(key = "':'.concat(#bookId)")
+    @CacheEvict(key = "':'.concat(#bookId)", beforeInvocation = true)
     public boolean deleteById(Long bookId) {
         Integer result = bookDao.deleteById(bookId);
         return result > 0;
